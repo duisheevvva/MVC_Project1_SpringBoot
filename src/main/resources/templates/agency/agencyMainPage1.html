@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en,ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap");
+</style>
+<body
+        style="
+      background-image: url('https://img.freepik.com/free-vector/background-realistic-abstract-technology-particle_23-2148431735.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0 auto;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Source Sans Pro', sans-serif;
+    "
+>
+<div style="padding: 20px">
+    <a href="/agencies/new" style="
+            padding: 8px 14px;
+            background-color: #4899D7;
+            text-decoration: none;
+            border-radius: 4px;
+            color: #fff;">New Agency</a>
+</div>
+<div style="display: flex; gap: 30px; padding: 40px">
+
+    <div th:each="agency:${agencies}"
+            style="
+          width: 300px;
+          border: 2px solid #494848;
+          background-color: #fff;
+          text-transform: capitalize;
+          border-radius: 6px;
+          padding-bottom: 20px;
+        "
+    >
+        <div>
+            <img
+                    style="
+              width: 300px;
+              border-top-left-radius: 6px;
+              border-top-right-radius: 6px;
+            "
+                    th:src="${agency.getImageLink()}"
+                    alt="Company's Image"
+            />
+            <div style="margin-left: 20px">
+                <div style="display: flex; gap: 100px">
+                    <h2 th:text="${agency.name}">Agency Name</h2>
+                    <td><a th:href="@{/agencies/edit/{id}(id=${agency.id})}">
+                    <div style="margin-top: 18px" th:method="GET"><!--th:action="@{edit/{id}(id=${agency.getId()})}"-->
+
+                            <button
+                                    style="
+                    background-color: #4899D7;
+                    border: none;
+                    border-radius: 4px;
+                    padding: 8px 15px;
+                    color: #fff;
+                    font-weight: 600;
+                    font-size: 15px;
+                    cursor: pointer;
+                  " type="submit"
+                            >
+                                Update
+                            </button>
+
+
+
+                    </div>
+                    </a>
+                    </td>
+                </div>
+                <p th:text="${agency.phoneNumber}">Phone Number</p>
+                <p th:text="${agency.country}">Country</p>
+                <p th:text="${agency.email}">Email</p>
+                <div style="display: flex; gap: 15px; margin-top: 30px">
+                    <td> <a th:href="@{/houses/{agencyId}(agencyId=${agency.id})}" >
+                        <button
+                                style="
+                  padding: 8px 15px;
+                  border: none;
+                  background-color: #FFFFBF;
+                  border-radius: 4px;
+                  padding: 8px 15px;
+                  color: #4F361F;
+                  font-weight: 600;
+                  font-size: 15px;
+                  cursor: pointer;
+                "
+                        >
+                            House
+                        </button>
+                    </a>
+                    </td>
+
+                    <div th:method="GET" th:action="@{/agencies/{agencyId}(agencyId=${agency.getId})}">
+
+                       <a  th:href="Profile" >
+                           <button
+
+                                   style="
+                  padding: 8px 15px;
+                  border: none;
+                  background-color: #8FBC8F;
+                  border-radius: 4px;
+                  padding: 8px 15px;
+                  color: #fff;
+                  font-weight: 600;
+                  font-size: 15px;
+                  cursor: pointer;
+                "
+                           >
+                               Profile
+                           </button>
+                       </a>
+
+                    </div>
+
+
+                    <div th:method="DELETE" th:action="@{/agencies/delete/{id}(id=${agency.getId()})}">
+
+                        <a th:href="DELETE">
+                            <button
+
+                                    style="
+                  padding: 8px 15px;
+                  border: none;
+                  background-color: #FF6666;
+                  border-radius: 4px;
+                  padding: 8px 15px;
+                  color: #fff;
+                  font-weight: 600;
+                  font-size: 15px;
+                  cursor: pointer;
+                "
+                            >
+                                Delete
+                            </button>
+                        </a>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+</div>
+<h1>syimyk</h1>
+</body>
+</html>
