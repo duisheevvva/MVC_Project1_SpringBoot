@@ -9,7 +9,6 @@ import peaksoft.repository.AgencyRepository;
 import peaksoft.repository.CustomerRepository;
 import peaksoft.service.CustomerService;
 
-import java.time.LocalDate;
 import java.util.List;
 @Service
 @RequiredArgsConstructor
@@ -62,22 +61,21 @@ public class CustomerServiceImpl implements CustomerService {
             System.out.println(e.getMessage());
         }
     }
-
     @Override
-    public void assignCustomerToAgency(Long customerId, Long agencyId) {
-        try{
-            Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new MyException("not found!"));
-            Agency agency = agencyRepository.findById(agencyId).orElseThrow(() -> new MyException("not found!"));
+    public void assignCustomerToAgency (Long agencyId, Long customerId) {
+        try {
+            Customer customer = customerRepository.findById(customerId)
+                    .orElseThrow(() -> new MyException("Customer with id: " + customerId + " is not found!"));
+            Agency agency = agencyRepository.findById(agencyId)
+                    .orElseThrow(() -> new MyException("Agency with id: " + agencyId + " is not found!"));
             customer.getAgencies().add(agency);
             agency.getCustomers().add(customer);
+            //TODO
             customerRepository.save(customer);
-
-
-        }catch (MyException e){
-            System.out.println(e.getMessage());
+            agencyRepository.save(agency);
+        } catch (MyException e) {
+            e.getMessage();
         }
-
-
     }
 
 

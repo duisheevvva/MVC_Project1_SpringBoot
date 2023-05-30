@@ -19,11 +19,15 @@ public class Booking {
             name = "booking_gen",
             sequenceName = "booking_seq",
             allocationSize = 1)
+
+
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH,
-            CascadeType.REMOVE})
+            })
     private Customer customer;
+
+
     @OneToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH})

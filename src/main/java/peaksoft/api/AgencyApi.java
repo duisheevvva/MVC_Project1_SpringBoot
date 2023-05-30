@@ -1,7 +1,7 @@
 package peaksoft.api;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,6 @@ import peaksoft.service.AgencyService;
 public class AgencyApi {
 
     private final AgencyService agencyService;
-
 
     @GetMapping("/new")
     public String createAgency(Model model) {

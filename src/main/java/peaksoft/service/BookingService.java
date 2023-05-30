@@ -6,7 +6,7 @@ import peaksoft.entity.Booking;
 import java.util.List;
 
 public interface BookingService {
-    void saveBooking(Booking booking);
+    void saveBooking(Booking booking,Long customerId,Long houseId);
 
     List<Booking> getAll(Long id);
 

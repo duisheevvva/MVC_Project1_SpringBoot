@@ -21,14 +21,14 @@
 <!--        <a th:href="@{/customers/{id} (id=${customer.getId()})}"  class="card-link">Info</a>-->
         <a th:href="@{/customers/{agencyId}/{customerId}/edit(agencyId=${agencyIds},customerId=${customer.id})}" class="card-link">Update</a>
 
-        <a th:href="@{/customers/assign (id=${customer.getId()})}" class="card-link">Assign</a>
+        <a th:method="GET" th:href="@{'/customers/' + ${agencyId} + '/createAssign/' + ${customer.id}}" class="card-link">Assign</a>
 
         <form th:method="POST" th:action="@{/customers/{agencyId}/{customerId}/delete(agencyId=${agencyIds},customerId=${customer.id})}">
             <input type="submit" th:value="Delete" class="btn btn-primary">
         </form>
     </div>
 </div>
-<a href="customers/new">Create new customer</a>
+<a th:href="@{'/customers/'+ ${agencyId} + '/new'}" th:method="GET">Create new customer</a>
 </div>
 </div>
 </body>

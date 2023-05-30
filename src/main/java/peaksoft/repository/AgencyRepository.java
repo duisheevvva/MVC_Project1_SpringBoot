@@ -9,7 +9,7 @@ import peaksoft.exception.MyException;
 import java.util.List;
 import java.util.Optional;
 
-public interface AgencyRepository extends JpaRepository<Agency,Long> {
+public interface AgencyRepository extends JpaRepository<Agency, Long> {
     @Query("select u from Agency u where u.name ilike :word")
     List<Agency> searchHouse(String word);
 

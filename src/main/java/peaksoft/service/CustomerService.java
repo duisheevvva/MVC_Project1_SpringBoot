@@ -11,5 +11,5 @@ public interface CustomerService {
     Customer getCustomerById(Long id);
     void updateCustomerById(Long id,Customer customer);
     void deletedCustomerById(Long id);
-    void assignCustomerToAgency(Long customerId,Long agencyId);
+    void assignCustomerToAgency(Long agencyId,Long customerId);
 }

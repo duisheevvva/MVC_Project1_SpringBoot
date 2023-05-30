@@ -9,7 +9,7 @@
 <body>
 <h2 class="title"> Add new Customer </h2>
 <div class="d-flex justify-content-centre">
-        <form class="p-5 bg-light" th:method="POST" th:action="@{/customers/{agencyId}/save(agencyId=${agencyId})}" th:object="${newCustomer}">
+        <form class="p-5 bg-light" th:method="POST" th:action="@{'/customers/' +${agencyId} + '/save'}" th:object="${newCustomer}">
         <div>
             <label for="surname">Sure name</label>
             <input type="text" th:field="*{surname}" id="surname">
